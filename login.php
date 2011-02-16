@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -39,7 +37,7 @@ session_start();
    
   $_SESSION ['username'] = '$name';
 $_SESSION ['pw'] = '$pw';
-echo "logged in as ". $_session['username'];
+
 ?>
   
   </div>
