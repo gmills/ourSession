@@ -4,7 +4,6 @@
 <?php
  $_session ['username'] = '$username';
 $_session ['pw'] = '$pw';
-echo "logged in as ". $_session['username'];
  ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -25,8 +24,6 @@ echo "logged in as ". $_session['username'];
   <?php
 
 include('db_connect.php');
-
-
 $username = $_POST['username'];
 $pw = $_POST['pw'];
 $zip = $_POST['zip'];
