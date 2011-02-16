@@ -4,8 +4,7 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-  session_start();
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Search</title>
@@ -32,7 +31,8 @@
   	if ($searchterm == 'movies')
   	{
   		$query = "SELECT * FROM movies ORDER BY movie";
-  
+	//mysql_real_escape_string($movies);
+
   		$result = mysqli_query($db, $query)
    			or die("Error Querying Database");
    		echo "<table id=\"hor-minimalist-b\">\n<tr><th>Movie</th><th>Theater</th><tr>\n\n";
@@ -61,8 +61,8 @@
   	}
   	
   }
-  $movie = mysqli_real_escape_string($db, trim($_POST['movieName'));
-  $theater = mysqli_real_escape_string($db, trim($_POST['theater'));
+  //$movie = mysqli_real_escape_string($db, trim($_POST['movieName'));
+  //$theater = mysqli_real_escape_string($db, trim($_POST['theater'));
   $query = "INSERT INTO movies VALUES ($movie, $theater)";
   ?>
   <p>&nbsp;</p><p><a href="logout.php">logout</a></p>

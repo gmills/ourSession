@@ -16,12 +16,8 @@ $_session ['pw'] = '$pw';
   <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
   <form method="post" action="login.php">
-    
-   
-	<input type="submit" value="Click to continue" name="submit" />
-	
-	
-  <?php
+  <input type="submit" value="Click to continue" name="submit" />
+<?php
 
 include('db_connect.php');
 $username = $_POST['username'];
