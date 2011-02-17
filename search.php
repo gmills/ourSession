@@ -51,12 +51,6 @@
   	}
   	else
   	{
-	
-		//$movie = mysqli_real_escape_string($db, trim($_POST['movieName'));
-		//$theater = mysqli_real_escape_string($db, trim($_POST['theater'));
-		//$query = "INSERT INTO movies VALUES ($movie, $theater)";
-		//</mysqli_real_escape_string>
-		
 		$term = mysqli_real_escape_string($db, trim($searchterm));
 	
   		//$query = "SELECT * FROM stores where (name LIKE '%$searchterm%' OR type LIKE '%$searchterm') AND zip = $zip ORDER BY name";
@@ -76,10 +70,6 @@
   	}
   	
   }
-  //$movie = mysqli_real_escape_string($db, trim($_POST['movieName'));
-  //$theater = mysqli_real_escape_string($db, trim($_POST['theater'));
-  //$query = "INSERT INTO movies VALUES ($movie, $theater)";
-  //</mysqli_real_escape_string>
   ?>
   <p>&nbsp;</p><p><a href="logout.php">logout</a></p>
   </div>
