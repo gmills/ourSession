@@ -14,6 +14,9 @@
 <body>
 <div id="contents">
   <h1>Search</h1>
+  
+  <h2><?php echo $_SESSION['username']; ?></h2>
+  
   <p>For example, you can type 'movies', 'coffee', 'Mexican', or the name of a store like 'Starbucks</p>
   <form method="post" action="search.php">
     <label for="username">Search:</label>
@@ -30,8 +33,10 @@
 
   	if ($searchterm == 'movies')
   	{
-  		$query = "SELECT * FROM movies ORDER BY movie";
-	//mysql_real_escape_string($movies);
+		$query = "SELECT * FROM movies ORDER BY movie";
+		//mysql_real_escape_string($movies);
+	
+		echo $query;
 
   		$result = mysqli_query($db, $query)
    			or die("Error Querying Database");
@@ -45,7 +50,16 @@
   	}
   	else
   	{
-  		$query = "SELECT * FROM stores where name LIKE '%$searchterm%' OR type LIKE '%$searchterm' ORDER BY name";
+	
+		//$movie = mysqli_real_escape_string($db, trim($_POST['movieName'));
+		//$theater = mysqli_real_escape_string($db, trim($_POST['theater'));
+		//$query = "INSERT INTO movies VALUES ($movie, $theater)";
+		//</mysqli_real_escape_string>
+		
+		$term = mysqli_real_escape_string($db, trim($searchterm));
+	
+  		//$query = "SELECT * FROM stores where name LIKE '%$searchterm%' OR type LIKE '%$searchterm' ORDER BY name";
+		$query = "SELECT * FROM stores where name LIKE '%$term%' OR type LIKE '%$term' ORDER BY name";
   
   		$result = mysqli_query($db, $query)
    			or die("Error Querying Database");

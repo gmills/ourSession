@@ -18,7 +18,7 @@ session_start();
   $name = $_POST['username'];
   $pw = $_POST['pw'];
 
-   $query = "select * from users WHERE username = '$name' AND password = '$pw'";
+   $query = "select * from users WHERE username = '$name' AND password = SHA('$pw')";
    $result = mysqli_query($db, $query);
    if ($row = mysqli_fetch_array($result))
    {
@@ -29,14 +29,15 @@ session_start();
    else
     {
    		echo "<p>Incorrect username or password</p>\n";
+		echo $query;
    		echo  "<h1>Log In</h1>\n  <form method=\"post\" action=\"login.php\">";
     	echo "<label for=\"username\">Username:</label><input type=\"text\" id=\"username\" name=\"username\" /><br />";
         echo "<label for=\"pw\">Password:</label><input type=\"password\" id=\"pw\" name=\"pw\" /><br />";
         echo "<input type=\"submit\" value=\"Login\" name=\"submit\" /></form> <p><a href=\"createAccount.html\">Create Account</a></p>";
     }
    
-  $_SESSION ['username'] = '$name';
-$_SESSION ['pw'] = '$pw';
+  $_SESSION ['username'] = $name;
+$_SESSION ['pw'] = $pw;
 
 ?>
   
