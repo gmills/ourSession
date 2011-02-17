@@ -26,6 +26,7 @@
   
   <?php
  echo $_SESSION ['zip'];
+ $zip = $_SESSION['zip'];
   include "db_connect.php";
   if (isset($_POST['search']))
   {
@@ -33,7 +34,7 @@
 
   	if ($searchterm == 'movies')
   	{
-		$query = "SELECT * FROM movies ORDER BY movie";
+		$query = "SELECT * FROM movies WHERE zip = $zip ORDER BY movie";
 		//mysql_real_escape_string($movies);
 	
 		echo $query;
@@ -58,8 +59,8 @@
 		
 		$term = mysqli_real_escape_string($db, trim($searchterm));
 	
-  		//$query = "SELECT * FROM stores where name LIKE '%$searchterm%' OR type LIKE '%$searchterm' ORDER BY name";
-		$query = "SELECT * FROM stores where name LIKE '%$term%' OR type LIKE '%$term' ORDER BY name";
+  		//$query = "SELECT * FROM stores where (name LIKE '%$searchterm%' OR type LIKE '%$searchterm') AND zip = $zip ORDER BY name";
+		$query = "SELECT * FROM stores where (name LIKE '%$term%' OR type LIKE '%$term') AND zip = $zip ORDER BY name";
   
   		$result = mysqli_query($db, $query)
    			or die("Error Querying Database");
